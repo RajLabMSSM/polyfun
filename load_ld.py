@@ -5,6 +5,7 @@ import os
 import scipy.sparse as sparse
 
 
+ 
 def load_ld(ld_prefix):
     # load SNPs info
     snps_filename_parquet = ld_prefix + '.parquet'
@@ -13,7 +14,7 @@ def load_ld(ld_prefix):
         df_ld_snps = pd.read_parquet(snps_filename_parquet)
     elif os.path.exists(snps_filename_gz):
         df_ld_snps = pd.read_table(snps_filename_gz, delim_whitespace=True)
-    else:
+    else: 
         raise ValueError('couldn\'t find SNPs file %s or %s' % (snps_filename_parquet, snps_filename_gz))
 
     # load LD matrix
@@ -31,3 +32,4 @@ def load_ld(ld_prefix):
         raise ValueError('LD matrix has a different number of SNPs than the SNPs file')
 
     return R, df_ld_snps
+ 
